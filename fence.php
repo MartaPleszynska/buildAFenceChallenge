@@ -15,4 +15,35 @@ class Fence
     public $length;
     public $numberOfPosts;
     public $numberOfRailings;
+
+    public function setNumberOfPosts()
+    {
+
+    }
+
+    public function setNumberOfRailings()
+    {
+
+    }
+
+    public function setFenceLength()
+    {
+
+    }
+
+    public function getNumberOfPosts()
+    {
+
+    }
+
+    public function getNumberOfRailings()
+    {
+
+    }
+
+    public function getFenceLength()
+    {
+
+    }
+
 }
