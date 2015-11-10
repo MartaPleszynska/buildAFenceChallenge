@@ -35,12 +35,41 @@ class FenceTest extends PHPUnit_Framework_TestCase
             [4, 0, 0],
             [1, 1, 0],
             [-1, -1, 0],
-            ['h','c',0]
+            ['h', 'c', 0]
         ];
         return $tests;
     }
 
+    /**
+     * @param $lengthProvided
+     * @param $posts             number of posts provided
+     * @param $railings          number of railings provided
+     * @param $actualLength      expected length
+     * @dataProvider             lengthProvider
+     */
+    public function test_calculating_no_of_railings_and_posts
+    ($posts, $railings, $lengthProvided)
+    {
+        $fence = new Fence();
+        $this->assertEquals(array($railings, $posts),
+            $fence->calculateNumberOfPostsAndRailings($lengthProvided));
+    }
 
+    public static function lengthProvider()
+    {
+        $tests = [
+            [2, 1, 1.7],
+            [3, 2, 3.3],
+            [3, 2, 1.8],
+//            [3, 5, 3.3],
+//            [0, 5, 0],
+//            [4, 0, 0],
+//            [1, 1, 0],
+//            [-1, -1, 0],
+//            ['h','c',0]
+        ];
+        return $tests;
+    }
 
 //    public function test_length_is_not_string ()
 //    {

@@ -53,19 +53,13 @@ class Fence
 
     }
 
-//    public function calculateNumberOfPostsAndRailings($length)
-//    {
-//        $block = 1.7;
-//        $numberOfRailings = $length / $block;
-//        $numberOfPosts = $numberOfRailings + 1;
-//        if ($length % $block) {
-//            $numberOfRailings = (int)$numberOfRailings + 1;
-//            $numberOfPosts = (int)$numberOfPosts + 1;
-//        }
-//        $length = $numberOfPosts * 0.10 + $numberOfRailings * 1.5;
-//        $length = (int)$length;
-//        return array($numberOfPosts, $numberOfRailings, $length);
-//    }
+    public function calculateNumberOfPostsAndRailings($lengthProvided)
+    {
+        $numberOfRailings =($lengthProvided - 0.10)/(1.5+0.10);
+        $numberOfRailings = ceil($numberOfRailings);
+        $numberOfPosts = $numberOfRailings + 1;
+        return array($numberOfRailings, $numberOfPosts);
+    }
 
     public function calculateLength($numberOfPosts, $numberOfRailings)
     {
@@ -77,7 +71,7 @@ class Fence
             if ($numberOfPosts < $numberOfRailings) {
                 $numberOfRailings = $numberOfPosts - 1;
             }
-            $length =  $numberOfPosts * 0.10 + $numberOfRailings * 1.5;
+            $length =  $numberOfRailings * (1.5+0.10) + 0.10;
         }
         return $length;
     }
