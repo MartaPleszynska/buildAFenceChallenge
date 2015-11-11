@@ -41,13 +41,6 @@ Railing length = 1.5m <br>
         <input type="submit" name="submit" value="Calculate">
     </div>
 </form>
-<div>
-    You need (number) of post and (number) of railings to build (length) fence.
-</div>
-<div>
-    Remaining posts: <br>
-    Remaining railings: <br>
-    Actual fence length:
-</div>
+
 </body>
 </html>
