@@ -5,7 +5,7 @@
  */
 class Post
 {
-    public static $width = 1.50; //in meters
+    public static $width = 0.10; //in meters
 }
 
 /**
@@ -13,7 +13,7 @@ class Post
  */
 class Railing
 {
-    public static $length = 0.10; //in meters
+    public static $length = 1.50; //in meters
 }
 
 /**
@@ -47,6 +47,7 @@ class Fence
      */
     public function calculateNumberOfPostsAndRailings($lengthProvided)
     {
+        $this->setFenceLength($lengthProvided);
         $postWidth = Post::$width;
         $railLength = Railing::$length;
         $numberOfRailings = 0;
@@ -55,9 +56,12 @@ class Fence
             $numberOfRailings = ($lengthProvided -  $postWidth) / ($railLength +  $postWidth);
             $numberOfRailings = ceil($numberOfRailings);
             $numberOfPosts = $numberOfRailings + 1;
-
+            $this->setNumberOfPosts($numberOfPosts);
+            $this->setNumberOfRailings($numberOfRailings);
             return array($numberOfRailings, $numberOfPosts);
         }
+        $this->setNumberOfPosts($numberOfPosts);
+        $this->setNumberOfRailings($numberOfRailings);
         return array($numberOfRailings, $numberOfPosts);
     }
 
@@ -70,6 +74,10 @@ class Fence
     public function calculateLength($numberOfPosts, $numberOfRailings)
     {
         $length = 0;
+        $postWidth = Post::$width;
+        $railLength = Railing::$length;
+        $this->setNumberOfPosts($numberOfPosts);
+        $this->setNumberOfRailings($numberOfRailings);
         if (($numberOfPosts >= 2) && ($numberOfRailings >= 1)) {
             if ($numberOfPosts > $numberOfRailings + 1) {
                 $numberOfPosts = $numberOfRailings + 1;
@@ -77,9 +85,9 @@ class Fence
             if ($numberOfPosts < $numberOfRailings) {
                 $numberOfRailings = $numberOfPosts - 1;
             }
-            $length = $numberOfRailings * (1.5 + 0.10) + 0.10;
+            $length = $numberOfRailings * ($railLength + $postWidth) + $postWidth;
         }
-
+        $this->setFenceLength($length);
         return $length;
     }
 
