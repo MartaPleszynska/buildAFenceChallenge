@@ -5,7 +5,9 @@
  * Date: 11/11/15
  * Time: 07:28
  */
-
+include 'fence.php';
+$railingLength = Railing::$length;
+$postWidth = Post::$width;
 
 ?>
 <html>
@@ -14,9 +16,12 @@
 
 </head>
 <body>
-<h1>Build A Fence</h1>
-Post width = 0.10m <br>
-Railing length = 1.5m <br>
+<div>
+    <h1>Build A Fence</h1>
+    Post width = <?php echo $postWidth?>m<br>
+    Railing length = git<?php echo $railingLength?>m
+</div>
+<br>
 <form action="submitPostAndRailings.php" method="post">
     <div>
         <label>Number of posts: </label>

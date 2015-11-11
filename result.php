@@ -8,7 +8,7 @@
 ?>
 <html>
 <head>
-    <title>Build a Fence</title>
+    <title>Result</title>
 </head>
 <body>
 <div>
