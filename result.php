@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: martapleszynska
+ * User: marta pleszynska
  * Date: 11/11/15
  * Time: 11:26
  */
@@ -16,6 +16,7 @@
     <?php echo $posts ?> posts and <?php echo $railings ?> railings.
 </div>
 <br>
+
 <div>
     Remaining posts: <br>
     Remaining railings: <br>

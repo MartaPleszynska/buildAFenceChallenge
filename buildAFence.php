@@ -18,18 +18,19 @@ $postWidth = Post::$width;
 <body>
 <div>
     <h1>Build A Fence</h1>
-    Post width = <?php echo $postWidth?>m<br>
-    Railing length = <?php echo $railingLength?>m
+    Post width = <?php echo $postWidth ?>m<br>
+    Railing length = <?php echo $railingLength ?>m
 </div>
 <br>
+
 <form action="submitPostAndRailings.php" method="post">
     <div>
         <label>Number of posts: </label>
-        <input type="number" name="posts" min="2" placeholder="minimum 2" step="1">
+        <input type="text" name="posts" min="2" placeholder="minimum 2" step="1">
     </div>
     <div>
         <label>Number of railings: </label>
-        <input type="number" name="railings" min="1" placeholder="minimum 1" step="1">
+        <input type="text" name="railings" min="1" placeholder="minimum 1" step="1">
     </div>
     <div>
         <label></label>

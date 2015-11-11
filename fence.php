@@ -37,10 +37,10 @@ class Fence
 
     public function setFenceLength($length)
     {
-            $this->length = $length;
+        $this->length = $length;
     }
 
-     /**
+    /**
      * @param $lengthProvided
      *
      * @return array
@@ -53,15 +53,17 @@ class Fence
         $numberOfRailings = 0;
         $numberOfPosts = 0;
         if ($lengthProvided > 0) {
-            $numberOfRailings = ($lengthProvided -  $postWidth) / ($railLength +  $postWidth);
+            $numberOfRailings = ($lengthProvided - $postWidth) / ($railLength + $postWidth);
             $numberOfRailings = ceil($numberOfRailings);
             $numberOfPosts = $numberOfRailings + 1;
             $this->setNumberOfPosts($numberOfPosts);
             $this->setNumberOfRailings($numberOfRailings);
+
             return array($numberOfRailings, $numberOfPosts);
         }
         $this->setNumberOfPosts($numberOfPosts);
         $this->setNumberOfRailings($numberOfRailings);
+
         return array($numberOfRailings, $numberOfPosts);
     }
 
@@ -88,6 +90,7 @@ class Fence
             $length = $numberOfRailings * ($railLength + $postWidth) + $postWidth;
         }
         $this->setFenceLength($length);
+
         return $length;
     }
 
