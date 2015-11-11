@@ -12,8 +12,10 @@
 </head>
 <body>
 <div>
-    You need (number) of post and (number) of railings to build (length) fence.
+    To build <?php echo $length ?>m fence, you need: <br>
+    <?php echo $posts ?> posts and <?php echo $railings ?> railings.
 </div>
+<br>
 <div>
     Remaining posts: <br>
     Remaining railings: <br>
