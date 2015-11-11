@@ -15,3 +15,11 @@ $length = $_POST['length'];
  */
 
 include 'fence.php';
+
+$fence = new Fence();
+$postsAndRailings = [];
+$postsAndRailings = $fence->calculateNumberOfPostsAndRailings($length);
+$posts = $postsAndRailings [1];
+$railings = $postsAndRailings [0];
+
+include 'result.php';
