@@ -5,7 +5,7 @@
  */
 class Post
 {
-    public $length = 1.50; //in meters
+    public static $width = 1.50; //in meters
 }
 
 /**
@@ -13,7 +13,7 @@ class Post
  */
 class Railing
 {
-    public $width = 0.10; //in meters
+    public static $length = 0.10; //in meters
 }
 
 /**
@@ -40,32 +40,19 @@ class Fence
             $this->length = $length;
     }
 
-    public function getNumberOfPosts()
-    {
-
-    }
-
-    public function getNumberOfRailings()
-    {
-
-    }
-
-    public function getFenceLength()
-    {
-
-    }
-
-    /**
+     /**
      * @param $lengthProvided
      *
      * @return array
      */
     public function calculateNumberOfPostsAndRailings($lengthProvided)
     {
+        $postWidth = Post::$width;
+        $railLength = Railing::$length;
         $numberOfRailings = 0;
         $numberOfPosts = 0;
         if ($lengthProvided > 0) {
-            $numberOfRailings = ($lengthProvided - 0.10) / (1.5 + 0.10);
+            $numberOfRailings = ($lengthProvided -  $postWidth) / ($railLength +  $postWidth);
             $numberOfRailings = ceil($numberOfRailings);
             $numberOfPosts = $numberOfRailings + 1;
 
@@ -95,5 +82,6 @@ class Fence
 
         return $length;
     }
+
 
 }

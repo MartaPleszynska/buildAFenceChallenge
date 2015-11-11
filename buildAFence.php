@@ -5,11 +5,7 @@
  * Date: 11/11/15
  * Time: 07:28
  */
-$posts = $_POST['posts'];
-$railings = $_POST['railings'];
-$length = $_POST['length'];
 
-include 'fence.php';
 
 ?>
 <html>
@@ -21,7 +17,7 @@ include 'fence.php';
 <h1>Build A Fence</h1>
 Post width = 0.10m <br>
 Railing length = 1.5m <br>
-<form action="" method="post">
+<form action="submitPostAndRailings.php" method="post">
     <div>
         <label>Number of posts: </label>
         <input type="number" name="posts" min="2" placeholder="minimum 2">
@@ -30,6 +26,12 @@ Railing length = 1.5m <br>
         <label>Number of railings: </label>
         <input type="number" name="railings" min="1" placeholder="minimum 1">
     </div>
+    <div>
+        <label></label>
+        <input type="submit" name="submit" value="Calculate">
+    </div>
+</form>
+<form action="submitLength.php" method="post">
     <div>
         <label>Fence length (in meters): </label>
         <input type="number" name="length" min="1.70" placeholder="minimum 1.70">
