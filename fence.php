@@ -94,5 +94,35 @@ class Fence
         return $length;
     }
 
+    /**
+     * @param $posts
+     *
+     * @return string  message depending on a correctness of a input
+     */
+    public function validatePostsNumber($posts)
+    {
+        if (!is_int($posts) || $posts < 0) {
+            $result = 'Incorrect input! Please enter a whole number greater or equals to 2.';
+        } elseif ($posts == 0 || $posts == 1) {
+            $result = 'You need at least 2 posts to build a fence!';
+        } else {
+            $result = 'You have used ' . $posts . ' posts.';
+        }
+
+        return $result;
+    }
+
+    public function validateRailingNumber($railings)
+    {
+        if (!is_int($railings) || $railings < 0) {
+            $result = 'Incorrect input! Please enter a whole number greater or equals to 1.';
+        } elseif ($railings == 0) {
+            $result = 'You need at least 1 railing to build a fence!';
+        } else {
+            $result = 'You have used ' . $railings . ' railing(s).';
+        }
+
+        return $result;
+    }
 
 }

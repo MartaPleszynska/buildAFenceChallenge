@@ -46,7 +46,6 @@ class FenceTest extends PHPUnit_Framework_TestCase
      * @param $lengthProvided
      * @param $posts             number of posts provided
      * @param $railings          number of railings provided
-     * @param $actualLength      expected length
      *
      * @dataProvider             lengthProvider
      */
@@ -78,11 +77,64 @@ class FenceTest extends PHPUnit_Framework_TestCase
         return $tests;
     }
 
+    /**
+     * @param $posts             number of posts provided
+     * @param $output            expected output
+     *
+     * @dataProvider             postsNumberProvider
+     */
+    public function test_validate_no_posts($posts, $output)
+    {
+        $fence = new Fence();
+        $this->assertEquals(
+            $output,
+            $fence->validatePostsNumber($posts)
+        );
+    }
 
-    //    public function test_length_is_not_string ()
-    //    {
-    //        $fence = new Fence();
-    //        $fence->setFenceLength('six');
-    //        $this->assertInternalType('float', $fence->length);
-    //    }
+    public static function postsNumberProvider()
+    {
+        $tests = [
+            [2, 'You have used 2 posts.'],
+            [3, 'You have used 3 posts.'],
+            [0, 'You need at least 2 posts to build a fence!'],
+            [1, 'You need at least 2 posts to build a fence!'],
+            [-1, 'Incorrect input! Please enter a whole number greater or equals to 2.'],
+            ['two', 'Incorrect input! Please enter a whole number greater or equals to 2.'],
+            [2.23, 'Incorrect input! Please enter a whole number greater or equals to 2.'],
+        ];
+
+        return $tests;
+    }
+
+    /**
+     * @param $railings             number of posts provided
+     * @param $output               expected output
+     *
+     * @dataProvider             railingsNumberProvider
+     */
+    public function test_validate_no_railings($railings, $output)
+    {
+        $fence = new Fence();
+        $this->assertEquals(
+            $output,
+            $fence->validateRailingNumber($railings)
+        );
+    }
+
+    public static function railingsNumberProvider()
+    {
+        $tests = [
+            [2, 'You have used 2 railing(s).'],
+            [3, 'You have used 3 railing(s).'],
+            [0, 'You need at least 1 railing to build a fence!'],
+            [-1, 'Incorrect input! Please enter a whole number greater or equals to 1.'],
+            ['two', 'Incorrect input! Please enter a whole number greater or equals to 1.'],
+            [2.23, 'Incorrect input! Please enter a whole number greater or equals to 1.'],
+        ];
+
+        return $tests;
+    }
+
+
 }
