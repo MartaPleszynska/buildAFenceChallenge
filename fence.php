@@ -8,11 +8,17 @@ class Post
     public $length = 1.50; //in meters
 }
 
+/**
+ * Class Railing
+ */
 class Railing
 {
     public $width = 0.10; //in meters
 }
 
+/**
+ * Class Fence
+ */
 class Fence
 {
     public $length; //must be in meters with 2 decimal places
@@ -31,11 +37,7 @@ class Fence
 
     public function setFenceLength($length)
     {
-        if (is_float($length)) {
             $this->length = $length;
-        } else {
-            echo 'Incorrect format!';
-        }
     }
 
     public function getNumberOfPosts()
@@ -53,26 +55,44 @@ class Fence
 
     }
 
+    /**
+     * @param $lengthProvided
+     *
+     * @return array
+     */
     public function calculateNumberOfPostsAndRailings($lengthProvided)
     {
-        $numberOfRailings =($lengthProvided - 0.10)/(1.5+0.10);
-        $numberOfRailings = ceil($numberOfRailings);
-        $numberOfPosts = $numberOfRailings + 1;
+        $numberOfRailings = 0;
+        $numberOfPosts = 0;
+        if ($lengthProvided > 0) {
+            $numberOfRailings = ($lengthProvided - 0.10) / (1.5 + 0.10);
+            $numberOfRailings = ceil($numberOfRailings);
+            $numberOfPosts = $numberOfRailings + 1;
+
+            return array($numberOfRailings, $numberOfPosts);
+        }
         return array($numberOfRailings, $numberOfPosts);
     }
 
+    /**
+     * @param $numberOfPosts
+     * @param $numberOfRailings
+     *
+     * @return int
+     */
     public function calculateLength($numberOfPosts, $numberOfRailings)
     {
         $length = 0;
-        if(($numberOfPosts >= 2) && ($numberOfRailings >= 1)) {
+        if (($numberOfPosts >= 2) && ($numberOfRailings >= 1)) {
             if ($numberOfPosts > $numberOfRailings + 1) {
                 $numberOfPosts = $numberOfRailings + 1;
             }
             if ($numberOfPosts < $numberOfRailings) {
                 $numberOfRailings = $numberOfPosts - 1;
             }
-            $length =  $numberOfRailings * (1.5+0.10) + 0.10;
+            $length = $numberOfRailings * (1.5 + 0.10) + 0.10;
         }
+
         return $length;
     }
 
