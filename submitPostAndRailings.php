@@ -8,19 +8,22 @@
 $posts = (int)$_POST['posts'];
 $railings = (int)$_POST['railings'];
 
-var_dump($posts);
-var_dump($railings);
-if (is_int($posts) && is_int($railings)) {
+$postsValidationMessage = 'Incorrect posts number. Please enter a whole number greater or equal to 2.' . "\n\r";
+$railingsValidationMessage = 'Incorrect railings number. Please enter a whole number greater or equal to 1.' . "\n\r";
+include 'fence.php';
+$fence = new Fence();
 
-    include 'fence.php';
-    $fence = new Fence();
+if (($fence->validatePostsNumber($posts)) || ($fence->validateRailingNumber($railings))) {
     $length = $fence->calculateLength($posts, $railings);
-
+    $railingsUsed = $fence->numberOfRailings;
+    $postsUsed = $fence->numberOfPosts;
+    $railingsLeft = $railings - ($railingsUsed);
+    $postsLeft = $posts - ($postsUsed );
     include 'result.php';
 } else {
-    echo 'Invalid input!! Number of posts and railings MUST be a whole positive number.';
+    echo nl2br($postsValidationMessage . $railingsValidationMessage);
     ?>
-    <a href="buildAFence.php"></a>
+    <a href="buildAFence.php">Go back</a>
     <?php
 }
 

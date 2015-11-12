@@ -7,13 +7,8 @@
  */
 $length = (float)$_POST['length'];
 number_format((float)$length, 2, '.', '');
-/*
- * if post and railings provided - calculate length
- * if only posts provided - set railing to posts no -1 and calculate a length
- * if only railings provided - set post to railings no +1 and calculate a length
- * if all provided - give message?
- * if only length provided - calculate post and railings
- */
+
+
 
 include 'fence.php';
 if (is_float($length)) {
@@ -25,6 +20,14 @@ if (is_float($length)) {
     $railings = $postsAndRailings [0];
 
     include 'result.php';
+
+//    $length = $fence->calculateLength($posts, $railings);
+//    $railingsUsed = $fence->numberOfRailings;
+//    $postsUsed = $fence->numberOfPosts;
+//    $railingsLeft = $railings - ($railingsUsed);
+//    $postsLeft = $posts - ($postsUsed );
+//    include 'result.php';
+
 } else {
     echo 'Invalid input!! A length MUST be a number with maximum two deciamal places';
     ?>

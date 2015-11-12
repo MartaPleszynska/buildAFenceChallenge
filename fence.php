@@ -5,14 +5,21 @@
  */
 class Post
 {
+    /**
+     * @var float
+     */
     public static $width = 0.10; //in meters
 }
 
 /**
  * Class Railing
+ *
  */
 class Railing
 {
+    /**
+     * @var float
+     */
     public static $length = 1.50; //in meters
 }
 
@@ -21,8 +28,17 @@ class Railing
  */
 class Fence
 {
+    /**
+     * @var
+     */
     public $length; //must be in meters with 2 decimal places
+    /**
+     * @var
+     */
     public $numberOfPosts; //whole number, must contain at least 2
+    /**
+     * @var
+     */
     public $numberOfRailings; //whole number, must contain at list 1
 
     public function setNumberOfPosts($number)
@@ -68,25 +84,29 @@ class Fence
     }
 
     /**
+     * desc...
      * @param $numberOfPosts
      * @param $numberOfRailings
      *
-     * @return int
+     * @return int length of fence
      */
     public function calculateLength($numberOfPosts, $numberOfRailings)
     {
         $length = 0;
         $postWidth = Post::$width;
         $railLength = Railing::$length;
-        $this->setNumberOfPosts($numberOfPosts);
-        $this->setNumberOfRailings($numberOfRailings);
-        if (($numberOfPosts >= 2) && ($numberOfRailings >= 1)) {
+        $postsValidationResult = $this->validatePostsNumber($numberOfPosts);
+        $railingValidationResult = $this->validateRailingNumber($numberOfRailings);
+        if ($postsValidationResult && $railingValidationResult) {
+
             if ($numberOfPosts > $numberOfRailings + 1) {
                 $numberOfPosts = $numberOfRailings + 1;
             }
             if ($numberOfPosts < $numberOfRailings) {
                 $numberOfRailings = $numberOfPosts - 1;
             }
+            $this->setNumberOfPosts($numberOfPosts);
+            $this->setNumberOfRailings($numberOfRailings);
             $length = $numberOfRailings * ($railLength + $postWidth) + $postWidth;
         }
         $this->setFenceLength($length);
@@ -101,28 +121,37 @@ class Fence
      */
     public function validatePostsNumber($posts)
     {
-        if (!is_int($posts) || $posts < 0) {
-            $result = 'Incorrect input! Please enter a whole number greater or equals to 2.';
-        } elseif ($posts == 0 || $posts == 1) {
-            $result = 'You need at least 2 posts to build a fence!';
-        } else {
-            $result = 'You have used ' . $posts . ' posts.';
+        if (!is_int($posts) || $posts < 2) {
+            return false;
         }
 
-        return $result;
+        return true;
     }
 
+    /**
+     * @param $railings
+     *
+     * @return string message depending on a correctness of a input
+     */
     public function validateRailingNumber($railings)
     {
-        if (!is_int($railings) || $railings < 0) {
-            $result = 'Incorrect input! Please enter a whole number greater or equals to 1.';
-        } elseif ($railings == 0) {
-            $result = 'You need at least 1 railing to build a fence!';
-        } else {
-            $result = 'You have used ' . $railings . ' railing(s).';
+        if (!is_int($railings) || $railings < 1) {
+            return false;
         }
 
-        return $result;
+        return true;
+    }
+
+    public function validateLengthInput($length)
+    {
+        if (is_int($length)) {
+            $length = (float)$length;
+        }
+        if (!is_float($length) || $length < 1) {
+            return false;
+        }
+
+        return true;
     }
 
 }
