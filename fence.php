@@ -13,7 +13,6 @@ class Post
 
 /**
  * Class Railing
- *
  */
 class Railing
 {
@@ -29,37 +28,54 @@ class Railing
 class Fence
 {
     /**
-     * @var
+     * @var $length must be in meters with 2 decimal places
      */
-    public $length; //must be in meters with 2 decimal places
+    public $length;
     /**
-     * @var
+     * @var $numberOfPosts must be a whole number, must contain at least 2
      */
-    public $numberOfPosts; //whole number, must contain at least 2
+    public $numberOfPosts;
     /**
-     * @var
+     * @var $numberOfRailings must be a whole number, must contain at least 1
      */
-    public $numberOfRailings; //whole number, must contain at list 1
+    public $numberOfRailings;
 
+    /**
+     * sets number of posts property to a given value
+     *
+     * @param int $number
+     */
     public function setNumberOfPosts($number)
     {
         $this->numberOfPosts = $number;
     }
 
+    /**
+     * sets number of railings property to a given value
+     *
+     * @param int $number
+     */
     public function setNumberOfRailings($number)
     {
         $this->numberOfRailings = $number;
     }
 
+    /**
+     * sets a length property to a given value
+     *
+     * @param float $length
+     */
     public function setFenceLength($length)
     {
         $this->length = $length;
     }
 
     /**
-     * @param $lengthProvided
+     * calculates number of posts and railings needed to build a fence of a given length value
      *
-     * @return array
+     * @param float $lengthProvided
+     *
+     * @return array number of railing and number of posts
      */
     public function calculateNumberOfPostsAndRailings($lengthProvided)
     {
@@ -86,9 +102,10 @@ class Fence
     }
 
     /**
-     * desc...
-     * @param $numberOfPosts
-     * @param $numberOfRailings
+     * calculates a length of a fence that can be build using given number of posts and railings
+     *
+     * @param int $numberOfPosts
+     * @param int $numberOfRailings
      *
      * @return int length of fence
      */
@@ -117,9 +134,11 @@ class Fence
     }
 
     /**
-     * @param $posts
+     * validate posts input: must be int and equals 2 or more
      *
-     * @return string  message depending on a correctness of a input
+     * @param mixed $posts
+     *
+     * @return bool true if valid
      */
     public function validatePostsNumber($posts)
     {
@@ -131,9 +150,11 @@ class Fence
     }
 
     /**
-     * @param $railings
+     * validates railings input: must be int and equals 1 or more
      *
-     * @return string message depending on a correctness of a input
+     * @param mixed $railings
+     *
+     * @return bool true if valid
      */
     public function validateRailingNumber($railings)
     {
@@ -144,6 +165,13 @@ class Fence
         return true;
     }
 
+    /**
+     * validates length input: must be float, equals to 1.7 or more
+     *
+     * @param mixed $length
+     *
+     * @return bool true if valid
+     */
     public function validateLengthInput($length)
     {
         if (is_int($length)) {
