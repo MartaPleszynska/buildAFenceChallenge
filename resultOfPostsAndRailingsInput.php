@@ -26,9 +26,7 @@
 <br>
 
 <div>
-    <!--    Remaining posts: <br>-->
-    <!--    Remaining railings: <br>-->
-    <!--    Actual fence length:-->
+    <a href="buildAFence.php"><strong>BUILD ANOTHER FENCE</strong></a>
 </div>
 </body>
 </html>

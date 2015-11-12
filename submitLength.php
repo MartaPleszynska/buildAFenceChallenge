@@ -6,31 +6,23 @@
  * Time: 09:31
  */
 $length = (float)$_POST['length'];
-//$length = number_format((float)$length, 2, '.', '');
-
-
+$lengthValidationMessage = 'Incorrect length input. Please enter a number with two decimal places greater or equal to 1.70.' . "\n\r";
 
 include 'fence.php';
-if (is_float($length)) {
+$fence = new Fence();
+if ($fence->validateLengthInput($length)) {
 
-    $fence = new Fence();
-    $postsAndRailings = [];
-    $postsAndRailings = $fence->calculateNumberOfPostsAndRailings($length);
-    $posts = $postsAndRailings [1];
-    $railings = $postsAndRailings [0];
+    $fence->calculateNumberOfPostsAndRailings($length);
+    $posts = (int)$fence->numberOfPosts;
+    $railings = (int)$fence->numberOfRailings;
+    $actualLength = $fence->calculateLength($posts, $railings);
 
+    $overshoot = $actualLength - $length;
     include 'resultOfLengthInput.php';
 
-//    $length = $fence->calculateLength($posts, $railings);
-//    $railingsUsed = $fence->numberOfRailings;
-//    $postsUsed = $fence->numberOfPosts;
-//    $railingsLeft = $railings - ($railingsUsed);
-//    $postsLeft = $posts - ($postsUsed );
-//    include 'resultPosAndRailings.php';
-
 } else {
-    echo 'Invalid input!! A length MUST be a number with maximum two decimal places';
+    echo nl2br($lengthValidationMessage);
     ?>
-    <a href="buildAFence.php"></a>
+    <a href="buildAFence.php">Go back</a>
     <?php
 }

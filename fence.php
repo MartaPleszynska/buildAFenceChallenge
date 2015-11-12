@@ -63,12 +63,14 @@ class Fence
      */
     public function calculateNumberOfPostsAndRailings($lengthProvided)
     {
-        $this->setFenceLength($lengthProvided);
-        $postWidth = Post::$width;
-        $railLength = Railing::$length;
         $numberOfRailings = 0;
         $numberOfPosts = 0;
-        if ($lengthProvided > 0) {
+        $lengthValidationResult = $this->validateLengthInput($lengthProvided);
+        if ($lengthValidationResult) {
+            $this->setFenceLength($lengthProvided);
+            $postWidth = Post::$width;
+            $railLength = Railing::$length;
+
             $numberOfRailings = ($lengthProvided - $postWidth) / ($railLength + $postWidth);
             $numberOfRailings = ceil($numberOfRailings);
             $numberOfPosts = $numberOfRailings + 1;
@@ -147,7 +149,7 @@ class Fence
         if (is_int($length)) {
             $length = (float)$length;
         }
-        if (!is_float($length) || $length < 1) {
+        if (!is_float($length) || $length < 1.7) {
             return false;
         }
 

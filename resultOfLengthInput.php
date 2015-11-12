@@ -15,20 +15,22 @@
 <body>
 <div>
     <?php
-    printf("With %d posts and %d railing(s) you can build a fence %.2f m long.", $posts, $railings, $length );
+    printf("To build a fence %.2f m long you will need %d posts and %d railing(s).", $length, $posts, $railings);
     ?>
     <br>
-    Posts used: <?php echo $postsUsed; ?><br>
-    Posts left: <?php echo $postsLeft; ?><br>
-    Railings used: <?php echo $railingsUsed; ?><br>
-    Railings left: <?php echo $railingsLeft; ?><br>
+    <?php
+    printf("Actual fence length will be: %.2f m long.", $actualLength);
+    ?>
+    <br>
+    <?php
+    printf("Overshoot: %.2f m long.", $overshoot);
+    ?>
+<br>
 </div>
 <br>
 
 <div>
-    <!--    Remaining posts: <br>-->
-    <!--    Remaining railings: <br>-->
-    <!--    Actual fence length:-->
+    <a href="buildAFence.php"><strong>BUILD ANOTHER FENCE</strong></a>
 </div>
 </body>
 </html>
