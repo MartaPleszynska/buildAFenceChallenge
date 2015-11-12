@@ -26,11 +26,11 @@ $postWidth = Post::$width;
 <form action="submitPostAndRailings.php" method="post">
     <div>
         <label>Number of posts: </label>
-        <input type="text" name="posts" min="2" placeholder="minimum 2" step="1">
+        <input type="number" name="posts" min="2" placeholder="minimum 2" step="1">
     </div>
     <div>
         <label>Number of railings: </label>
-        <input type="text" name="railings" min="1" placeholder="minimum 1" step="1">
+        <input type="number" name="railings" min="1" placeholder="minimum 1" step="1">
     </div>
     <div>
         <label></label>
