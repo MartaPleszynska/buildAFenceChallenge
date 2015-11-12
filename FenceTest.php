@@ -2,16 +2,15 @@
 
 /**
  * Created by PhpStorm.
- * User: martapleszynska
+ * User: marta pleszynska
  * Date: 09/11/15
  * Time: 13:52
  */
 require 'fence.php';
 
 /**
- * Class FenceTest (desc)
-
-
+ * Class FenceTest
+ * unit tests for Fence Class
  */
 class FenceTest extends PHPUnit_Framework_TestCase
 {
@@ -48,7 +47,7 @@ class FenceTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param $lengthProvided
+     * @param $lengthProvided    given length
      * @param $posts             number of posts provided
      * @param $railings          number of railings provided
      *
@@ -127,6 +126,9 @@ class FenceTest extends PHPUnit_Framework_TestCase
         );
     }
 
+    /**
+     * @return array
+     */
     public static function railingsNumberProvider()
     {
         $tests = [
@@ -156,6 +158,9 @@ class FenceTest extends PHPUnit_Framework_TestCase
         );
     }
 
+    /**
+     * @return array
+     */
     public static function lengthInputProvider()
     {
         $tests = [
@@ -185,6 +190,9 @@ class FenceTest extends PHPUnit_Framework_TestCase
         );
     }
 
+    /**
+     * @return array
+     */
     public static function postsInputProvider()
     {
         $tests = [
@@ -212,6 +220,9 @@ class FenceTest extends PHPUnit_Framework_TestCase
         );
     }
 
+    /**
+     * @return array
+     */
     public static function railingInputProvider()
     {
         $tests = [
@@ -239,6 +250,9 @@ class FenceTest extends PHPUnit_Framework_TestCase
         );
     }
 
+    /**
+     * @return array
+     */
     public static function lengthSetProvider()
     {
         $tests = [
