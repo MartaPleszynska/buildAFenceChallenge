@@ -19,7 +19,7 @@ if (is_float($length)) {
     $posts = $postsAndRailings [1];
     $railings = $postsAndRailings [0];
 
-    include 'resultPostsAndRailings.php';
+    include 'resultOfLengthInput.php';
 
 //    $length = $fence->calculateLength($posts, $railings);
 //    $railingsUsed = $fence->numberOfRailings;

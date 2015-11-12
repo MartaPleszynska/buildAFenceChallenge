@@ -19,7 +19,7 @@ if (($fence->validatePostsNumber($posts)) || ($fence->validateRailingNumber($rai
     $postsUsed = $fence->numberOfPosts;
     $railingsLeft = $railings - ($railingsUsed);
     $postsLeft = $posts - ($postsUsed );
-    include 'resultLength.php';
+    include 'resultOfPostsAndRailingsInput.php';
 } else {
     echo nl2br($postsValidationMessage . $railingsValidationMessage);
     ?>
