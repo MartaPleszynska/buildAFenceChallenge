@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: martapleszynska
+ * User: marta pleszynska
  * Date: 11/11/15
  * Time: 09:30
  */
@@ -18,7 +18,7 @@ if (($fence->validatePostsNumber($posts)) || ($fence->validateRailingNumber($rai
     $railingsUsed = $fence->numberOfRailings;
     $postsUsed = $fence->numberOfPosts;
     $railingsLeft = $railings - ($railingsUsed);
-    $postsLeft = $posts - ($postsUsed );
+    $postsLeft = $posts - ($postsUsed);
     include 'resultOfPostsAndRailingsInput.php';
 } else {
     echo nl2br($postsValidationMessage . $railingsValidationMessage);

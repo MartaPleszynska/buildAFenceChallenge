@@ -5,8 +5,6 @@
  * Date: 11/11/15
  * Time: 11:26
  */
-
-
 ?>
 <html>
 <head>
@@ -25,7 +23,7 @@
     <?php
     printf("Overshoot: %.2f m long.", $overshoot);
     ?>
-<br>
+    <br>
 </div>
 <br>
 

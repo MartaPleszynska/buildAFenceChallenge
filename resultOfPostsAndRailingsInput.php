@@ -5,8 +5,6 @@
  * Date: 11/11/15
  * Time: 11:26
  */
-
-
 ?>
 <html>
 <head>
@@ -15,7 +13,7 @@
 <body>
 <div>
     <?php
-    printf("With %d posts and %d railing(s) you can build a fence %.2f m long.", $posts, $railings, $length );
+    printf("With %d posts and %d railing(s) you can build a fence %.2f m long.", $posts, $railings, $length);
     ?>
     <br>
     Posts used: <?php echo $postsUsed; ?><br>
