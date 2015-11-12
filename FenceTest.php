@@ -10,8 +10,8 @@ require 'fence.php';
 
 /**
  * Class FenceTest (desc)
- *
- *
+
+
  */
 class FenceTest extends PHPUnit_Framework_TestCase
 {
@@ -119,13 +119,13 @@ class FenceTest extends PHPUnit_Framework_TestCase
      * @dataProvider             railingsNumberProvider
      */
     public function test_validate_no_railings($railings, $output)
-{
-    $fence = new Fence();
-    $this->assertEquals(
-        $output,
-        $fence->validateRailingNumber($railings)
-    );
-}
+    {
+        $fence = new Fence();
+        $this->assertEquals(
+            $output,
+            $fence->validateRailingNumber($railings)
+        );
+    }
 
     public static function railingsNumberProvider()
     {
@@ -189,7 +189,63 @@ class FenceTest extends PHPUnit_Framework_TestCase
     {
         $tests = [
             [2],
+            [3],
+            ['j'],
+        ];
 
+        return $tests;
+    }
+
+    /**
+     * @param $railings
+     *
+     * @dataProvider railingInputProvider
+     */
+    public function test_set_num_of_railings($railings)
+    {
+        $fence = new Fence();
+        $fence->setNumberOfRailings($railings);
+        $output = $fence->numberOfRailings;
+        $this->assertEquals(
+            $output,
+            $railings
+        );
+    }
+
+    public static function railingInputProvider()
+    {
+        $tests = [
+            [2],
+            [3],
+            ['j'],
+        ];
+
+        return $tests;
+    }
+
+    /**
+     * @param $length
+     *
+     * @dataProvider lengthSetProvider
+     */
+    public function test_set_num_of_length($length)
+    {
+        $fence = new Fence();
+        $fence->setFenceLength($length);
+        $output = $fence->length;
+        $this->assertEquals(
+            $output,
+            $length
+        );
+    }
+
+    public static function lengthSetProvider()
+    {
+        $tests = [
+            [2],
+            [3],
+            ['j'],
+            ['2.23'],
         ];
 
         return $tests;
