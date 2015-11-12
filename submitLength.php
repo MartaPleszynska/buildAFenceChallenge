@@ -6,7 +6,7 @@
  * Time: 09:31
  */
 $length = (float)$_POST['length'];
-number_format((float)$length, 2, '.', '');
+//$length = number_format((float)$length, 2, '.', '');
 
 
 
@@ -19,17 +19,17 @@ if (is_float($length)) {
     $posts = $postsAndRailings [1];
     $railings = $postsAndRailings [0];
 
-    include 'result.php';
+    include 'resultPostsAndRailings.php';
 
 //    $length = $fence->calculateLength($posts, $railings);
 //    $railingsUsed = $fence->numberOfRailings;
 //    $postsUsed = $fence->numberOfPosts;
 //    $railingsLeft = $railings - ($railingsUsed);
 //    $postsLeft = $posts - ($postsUsed );
-//    include 'result.php';
+//    include 'resultPosAndRailings.php';
 
 } else {
-    echo 'Invalid input!! A length MUST be a number with maximum two deciamal places';
+    echo 'Invalid input!! A length MUST be a number with maximum two decimal places';
     ?>
     <a href="buildAFence.php"></a>
     <?php

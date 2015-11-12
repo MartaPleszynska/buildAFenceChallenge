@@ -14,7 +14,9 @@
 </head>
 <body>
 <div>
-    With <?php echo $posts ?> posts and <?php echo $railings ?> railing(s) you can build a fence <?php echo $length ?>m long.
+    <?php
+    printf("With %d posts and %d railing(s) you can build a fence %.2f m long.", $posts, $railings, $length );
+    ?>
     <br>
     Posts used: <?php echo $postsUsed; ?><br>
     Posts left: <?php echo $postsLeft; ?><br>
